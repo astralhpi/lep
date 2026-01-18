@@ -1,0 +1,20 @@
+[package]
+name = "lep"
+version = "0.1.0"
+edition = "2021"
+description = "Local Echo Proxy - mosh-style predictive echo over SSH"
+license = "MIT"
+repository = "https://github.com/anomalyco/lep"
+readme = "README.md"
+keywords = ["terminal", "ssh", "mosh", "local-echo", "pty"]
+categories = ["command-line-utilities", "network-programming"]
+
+[dependencies]
+alacritty_terminal = "0.25"
+nix = { version = "0.30", features = ["term", "signal", "process", "poll"] }
+vte = "0.13"
+unicode-width = "0.2"
+log = "0.4"
+
+[dev-dependencies]
+env_logger = "0.11"

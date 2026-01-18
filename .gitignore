@@ -1,0 +1,4 @@
+/target
+Cargo.lock
+mise.toml
+*.log
