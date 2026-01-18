@@ -1,0 +1,8 @@
+# mise configuration for lep
+# Users can install with: mise install lep
+# Or add to their mise.toml: [tools] lep = "latest"
+
+[tools]
+# This file is for development only
+# mise will use the registry for installation
+

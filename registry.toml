@@ -1,0 +1,18 @@
+# mise registry entry for lep
+# Submit this to https://github.com/jdx/mise-registry
+#
+# After release, users can install with:
+#   mise use -g ubi:astralhpi/lep
+#
+# Or after registry approval:
+#   mise use -g lep
+
+[lep]
+# ubi backend automatically downloads from GitHub releases
+backends = ["ubi:astralhpi/lep"]
+
+# Binary name
+bin = "lep"
+
+# Description
+description = "Local Echo Proxy - mosh-style predictive local echo for SSH"

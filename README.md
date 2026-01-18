@@ -18,10 +18,42 @@ When you type over a high-latency SSH connection, there's a noticeable delay bef
 
 ## Installation
 
+### With mise (recommended)
+
+```bash
+mise use -g ubi:astralhpi/lep
+```
+
+### With cargo
+
+```bash
+cargo install --git https://github.com/astralhpi/lep
+```
+
+### From binary
+
+Download from [GitHub Releases](https://github.com/astralhpi/lep/releases):
+
+```bash
+# macOS (Apple Silicon)
+curl -LO https://github.com/astralhpi/lep/releases/latest/download/lep-darwin-aarch64.tar.gz
+tar xzf lep-darwin-aarch64.tar.gz
+sudo mv lep /usr/local/bin/
+
+# macOS (Intel)
+curl -LO https://github.com/astralhpi/lep/releases/latest/download/lep-darwin-x86_64.tar.gz
+
+# Linux (x86_64)
+curl -LO https://github.com/astralhpi/lep/releases/latest/download/lep-linux-x86_64.tar.gz
+
+# Linux (ARM64)
+curl -LO https://github.com/astralhpi/lep/releases/latest/download/lep-linux-aarch64.tar.gz
+```
+
 ### From source
 
 ```bash
-git clone https://github.com/anomalyco/lep
+git clone https://github.com/astralhpi/lep
 cd lep
 cargo build --release
 sudo cp target/release/lep /usr/local/bin/
@@ -29,8 +61,8 @@ sudo cp target/release/lep /usr/local/bin/
 
 ### Requirements
 
-- Rust 1.70+
 - macOS or Linux
+- Rust 1.70+ (for building from source)
 
 ## Usage
 
