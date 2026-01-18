@@ -112,9 +112,7 @@ impl Command {
                     output.extend_from_slice(b"\x1b[4m");
                 }
                 // Space(s) to cover the character
-                for _ in 0..*width {
-                    output.push(b' ');
-                }
+                output.extend(std::iter::repeat_n(b' ', *width as usize));
                 // Underline off (only if flagging)
                 if flagging {
                     output.extend_from_slice(b"\x1b[24m");
@@ -151,9 +149,7 @@ impl Command {
                 // Write emulator's current value (ground truth)
                 let cell = &term.grid()[Line(*row as i32)][Column(*col)];
                 if cell.c == '\0' || cell.c == ' ' {
-                    for _ in 0..*width {
-                        output.push(b' ');
-                    }
+                    output.extend(std::iter::repeat_n(b' ', *width as usize));
                 } else {
                     let mut buf = [0u8; 4];
                     output.extend_from_slice(cell.c.encode_utf8(&mut buf).as_bytes());
@@ -170,9 +166,7 @@ impl Command {
                 // Write emulator's current value (ground truth from server)
                 let cell = &term.grid()[Line(*row as i32)][Column(*col)];
                 if cell.c == '\0' || cell.c == ' ' {
-                    for _ in 0..*width {
-                        output.push(b' ');
-                    }
+                    output.extend(std::iter::repeat_n(b' ', *width as usize));
                 } else {
                     let mut buf = [0u8; 4];
                     output.extend_from_slice(cell.c.encode_utf8(&mut buf).as_bytes());

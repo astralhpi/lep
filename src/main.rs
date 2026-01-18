@@ -295,7 +295,7 @@ impl InputHandler {
                 // Re-process this byte as normal input
                 self.esc_buf.clear();
                 // Process the byte as if it's a normal character
-                if byte >= 0x20 && byte < 0x7f {
+                if (0x20..0x7f).contains(&byte) {
                     return Some(self.create_char_command(byte as char, emulator));
                 }
                 return None;
@@ -646,12 +646,9 @@ fn proxy_loop(
 
                         // If rollback needed, do it BEFORE passthrough
                         // This clears predictions so server output won't be overwritten
-                        match &result {
-                            VerifyResult::Rollback(undo) => {
-                                debug!("rollback: {:?}", String::from_utf8_lossy(undo));
-                                stdout.write_all(undo)?;
-                            }
-                            _ => {}
+                        if let VerifyResult::Rollback(undo) = &result {
+                            debug!("rollback: {:?}", String::from_utf8_lossy(undo));
+                            stdout.write_all(undo)?;
                         }
 
                         // Move cursor to server position ONLY if we had pending predictions

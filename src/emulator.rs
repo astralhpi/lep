@@ -625,8 +625,7 @@ fn decode_utf8_char(data: &[u8]) -> Option<(char, usize)> {
     let mut code_point = (first & mask) as u32;
 
     // Add continuation bytes
-    for i in 1..len {
-        let byte = data[i];
+    for &byte in data.iter().take(len).skip(1) {
         if byte & 0xC0 != 0x80 {
             return None;
         }
